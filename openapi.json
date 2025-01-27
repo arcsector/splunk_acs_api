@@ -2025,6 +2025,61 @@
         "x-auth-required": false
       }
     },
+    "/{stack}/adminconfig/v2/access/outbound-ports-v6/{port}": {
+      "get": {
+        "description": "describe the outboundports with ports and ipv6 subnets",
+        "operationId": "DescribeOutboundportsV6",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/stack"
+          },
+          {
+            "description": "the port on which we want to get the allowed ipv6 subnets",
+            "in": "path",
+            "name": "port",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "outboundports": {
+                      "description": "the ipv6 subnets from where the stack feature can access to",
+                      "items": {
+                        "$ref": "#/components/schemas/OutboundResponse"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "list of outbound ports"
+          },
+          "default": {
+            "$ref": "#/components/responses/defaultError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "outbound",
+          "ipv6"
+        ],
+        "x-auth-required": false
+      }
+    },
     "/{stack}/adminconfig/v2/access/outbound-ports/{port}": {
       "delete": {
         "description": "delete an existing outbound port if it exists, from where the feature is accessible from",

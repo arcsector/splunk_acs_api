@@ -20,6 +20,7 @@ from pydantic import Field, StrictInt, StrictStr
 from typing_extensions import Annotated
 from splunk_acs_sdk.models.add_outboundports_request import AddOutboundportsRequest
 from splunk_acs_sdk.models.delete_outboundport_request import DeleteOutboundportRequest
+from splunk_acs_sdk.models.describe_outboundports200_response import DescribeOutboundports200Response
 from splunk_acs_sdk.models.get_outboundports200_response import GetOutboundports200Response
 from splunk_acs_sdk.models.warning_response import WarningResponse
 
@@ -651,7 +652,7 @@ class OutboundApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> GetOutboundports200Response:
+    ) -> DescribeOutboundports200Response:
         """describe_outboundports
 
         describe the outboundports with ports and subnets
@@ -692,7 +693,7 @@ class OutboundApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetOutboundports200Response",
+            '200': "DescribeOutboundports200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -722,7 +723,7 @@ class OutboundApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[GetOutboundports200Response]:
+    ) -> ApiResponse[DescribeOutboundports200Response]:
         """describe_outboundports
 
         describe the outboundports with ports and subnets
@@ -763,7 +764,7 @@ class OutboundApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetOutboundports200Response",
+            '200': "DescribeOutboundports200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -834,7 +835,7 @@ class OutboundApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetOutboundports200Response",
+            '200': "DescribeOutboundports200Response",
         }
         response_data = self.api_client.call_api(
             *_param,

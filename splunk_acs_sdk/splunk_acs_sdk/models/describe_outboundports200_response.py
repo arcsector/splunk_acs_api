@@ -17,18 +17,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
 from splunk_acs_sdk.models.outbound_response import OutboundResponse
 from typing import Optional, Set
 from typing_extensions import Self
 
-class GetOutboundports200Response(BaseModel):
+class DescribeOutboundports200Response(BaseModel):
     """
-    GetOutboundports200Response
+    DescribeOutboundports200Response
     """ # noqa: E501
-    items: Optional[OutboundResponse] = None
-    __properties: ClassVar[List[str]] = ["items"]
+    outboundports: Optional[List[OutboundResponse]] = Field(default=None, description="the subnets from where the stack feature can access to")
+    __properties: ClassVar[List[str]] = ["outboundports"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +48,7 @@ class GetOutboundports200Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GetOutboundports200Response from a JSON string"""
+        """Create an instance of DescribeOutboundports200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,14 +69,18 @@ class GetOutboundports200Response(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of items
-        if self.items:
-            _dict['items'] = self.items.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in outboundports (list)
+        _items = []
+        if self.outboundports:
+            for _item_outboundports in self.outboundports:
+                if _item_outboundports:
+                    _items.append(_item_outboundports.to_dict())
+            _dict['outboundports'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GetOutboundports200Response from a dict"""
+        """Create an instance of DescribeOutboundports200Response from a dict"""
         if obj is None:
             return None
 
@@ -84,7 +88,7 @@ class GetOutboundports200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "items": OutboundResponse.from_dict(obj["items"]) if obj.get("items") is not None else None
+            "outboundports": [OutboundResponse.from_dict(_item) for _item in obj["outboundports"]] if obj.get("outboundports") is not None else None
         })
         return _obj
 

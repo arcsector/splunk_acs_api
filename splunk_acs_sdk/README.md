@@ -225,6 +225,7 @@ Class | Method | HTTP request | Description
  - [DescribeEligibilityPrivateConnectivity](docs/DescribeEligibilityPrivateConnectivity.md)
  - [DescribeHec200Response](docs/DescribeHec200Response.md)
  - [DescribeManagedGlueResources](docs/DescribeManagedGlueResources.md)
+ - [DescribeOutboundports200Response](docs/DescribeOutboundports200Response.md)
  - [DescribePrivateConnectivity](docs/DescribePrivateConnectivity.md)
  - [DescribeStack200Response](docs/DescribeStack200Response.md)
  - [DescribeWorkflowResponseObject](docs/DescribeWorkflowResponseObject.md)

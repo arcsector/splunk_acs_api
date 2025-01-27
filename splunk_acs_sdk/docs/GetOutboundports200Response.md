@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**outboundports** | [**List[OutboundResponse]**](OutboundResponse.md) | the subnets from where the stack feature can access to | [optional] 
+**items** | [**OutboundResponse**](OutboundResponse.md) |  | [optional] 
 
 ## Example
 

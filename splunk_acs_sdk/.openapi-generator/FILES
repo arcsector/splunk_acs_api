@@ -34,6 +34,7 @@ docs/DescribeAllowlistV6200Response.md
 docs/DescribeEligibilityPrivateConnectivity.md
 docs/DescribeHec200Response.md
 docs/DescribeManagedGlueResources.md
+docs/DescribeOutboundports200Response.md
 docs/DescribePrivateConnectivity.md
 docs/DescribeStack200Response.md
 docs/DescribeWorkflowResponseObject.md
@@ -192,6 +193,7 @@ splunk_acs_sdk/models/describe_allowlist_v6200_response.py
 splunk_acs_sdk/models/describe_eligibility_private_connectivity.py
 splunk_acs_sdk/models/describe_hec200_response.py
 splunk_acs_sdk/models/describe_managed_glue_resources.py
+splunk_acs_sdk/models/describe_outboundports200_response.py
 splunk_acs_sdk/models/describe_private_connectivity.py
 splunk_acs_sdk/models/describe_stack200_response.py
 splunk_acs_sdk/models/describe_workflow_response_object.py
@@ -271,4 +273,5 @@ splunk_acs_sdk/py.typed
 splunk_acs_sdk/rest.py
 test-requirements.txt
 test/__init__.py
+test/test_describe_outboundports200_response.py
 tox.ini

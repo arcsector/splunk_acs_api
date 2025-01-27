@@ -172,7 +172,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **describe_outboundports**
-> GetOutboundports200Response describe_outboundports(stack, port)
+> DescribeOutboundports200Response describe_outboundports(stack, port)
 
 
 
@@ -184,7 +184,7 @@ describe the outboundports with ports and subnets
 
 ```python
 import splunk_acs_sdk
-from splunk_acs_sdk.models.get_outboundports200_response import GetOutboundports200Response
+from splunk_acs_sdk.models.describe_outboundports200_response import DescribeOutboundports200Response
 from splunk_acs_sdk.rest import ApiException
 from pprint import pprint
 
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetOutboundports200Response**](GetOutboundports200Response.md)
+[**DescribeOutboundports200Response**](DescribeOutboundports200Response.md)
 
 ### Authorization
 
