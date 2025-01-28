@@ -18,3 +18,9 @@ After installing the prerequisites above:
 0. Execute the `get_api_spec.sh` file to grab the openapi spec file from Splunk.
 1. After downloading, run the `generate_api_spec.sh` file to convert the openapi spec into python code
 2. Optional: Install the sdk with `cd splunk_acs_sdk/; pip install .`
+3. Follow the examples in the docs
+
+## Documentation
+
+|**[This Repo's Github Pages](https://arcsector.github.io/splunk_acs_api/splunk_acs_sdk.html)**|
+|--|
