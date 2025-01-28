@@ -22,10 +22,13 @@ docs/ChangePythonVersionRequest.md
 docs/CloudResourcesApi.md
 docs/CreateEcSsoPairingResponse.md
 docs/CreateHEC202Response.md
+docs/CreateOutboundPortsV6Request.md
+docs/CreateOutboundPortsV6RequestOutboundPortsInner.md
 docs/CreateToken200Response.md
 docs/CreateUserRequest.md
 docs/DDSSApi.md
 docs/DefaultApi.md
+docs/DeleteOutboundPortV6Request.md
 docs/DeleteOutboundportRequest.md
 docs/DeploymentInfo.md
 docs/DeploymentStatus.md
@@ -34,7 +37,6 @@ docs/DescribeAllowlistV6200Response.md
 docs/DescribeEligibilityPrivateConnectivity.md
 docs/DescribeHec200Response.md
 docs/DescribeManagedGlueResources.md
-docs/DescribeOutboundports200Response.md
 docs/DescribePrivateConnectivity.md
 docs/DescribeStack200Response.md
 docs/DescribeWorkflowResponseObject.md
@@ -49,7 +51,6 @@ docs/Extra.md
 docs/GetEcSsoPairingStatusResponse.md
 docs/GetIndexInfo200Response.md
 docs/GetLimitConfig200Response.md
-docs/GetOutboundports200Response.md
 docs/HecInfo.md
 docs/HecSpec.md
 docs/ImportedRolesInfo.md
@@ -183,8 +184,11 @@ splunk_acs_sdk/models/capabilities_info.py
 splunk_acs_sdk/models/change_python_version_request.py
 splunk_acs_sdk/models/create_ec_sso_pairing_response.py
 splunk_acs_sdk/models/create_hec202_response.py
+splunk_acs_sdk/models/create_outbound_ports_v6_request.py
+splunk_acs_sdk/models/create_outbound_ports_v6_request_outbound_ports_inner.py
 splunk_acs_sdk/models/create_token200_response.py
 splunk_acs_sdk/models/create_user_request.py
+splunk_acs_sdk/models/delete_outbound_port_v6_request.py
 splunk_acs_sdk/models/delete_outboundport_request.py
 splunk_acs_sdk/models/deployment_info.py
 splunk_acs_sdk/models/deployment_status.py
@@ -193,7 +197,6 @@ splunk_acs_sdk/models/describe_allowlist_v6200_response.py
 splunk_acs_sdk/models/describe_eligibility_private_connectivity.py
 splunk_acs_sdk/models/describe_hec200_response.py
 splunk_acs_sdk/models/describe_managed_glue_resources.py
-splunk_acs_sdk/models/describe_outboundports200_response.py
 splunk_acs_sdk/models/describe_private_connectivity.py
 splunk_acs_sdk/models/describe_stack200_response.py
 splunk_acs_sdk/models/describe_workflow_response_object.py
@@ -206,7 +209,6 @@ splunk_acs_sdk/models/extra.py
 splunk_acs_sdk/models/get_ec_sso_pairing_status_response.py
 splunk_acs_sdk/models/get_index_info200_response.py
 splunk_acs_sdk/models/get_limit_config200_response.py
-splunk_acs_sdk/models/get_outboundports200_response.py
 splunk_acs_sdk/models/hec_info.py
 splunk_acs_sdk/models/hec_spec.py
 splunk_acs_sdk/models/imported_roles_info.py
@@ -273,5 +275,7 @@ splunk_acs_sdk/py.typed
 splunk_acs_sdk/rest.py
 test-requirements.txt
 test/__init__.py
-test/test_describe_outboundports200_response.py
+test/test_create_outbound_ports_v6_request.py
+test/test_create_outbound_ports_v6_request_outbound_ports_inner.py
+test/test_delete_outbound_port_v6_request.py
 tox.ini

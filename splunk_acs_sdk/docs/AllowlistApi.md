@@ -5,6 +5,9 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**add_subnets**](AllowlistApi.md#add_subnets) | **POST** /{stack}/adminconfig/v2/access/{feature}/ipallowlists | 
+[**create_allowlist_v6**](AllowlistApi.md#create_allowlist_v6) | **POST** /{stack}/adminconfig/v2/access/{feature}/ipallowlists-v6 | 
+[**delete_allowlist_v6**](AllowlistApi.md#delete_allowlist_v6) | **DELETE** /{stack}/adminconfig/v2/access/{feature}/ipallowlists-v6/{subnet} | 
+[**delete_allowlists_v6**](AllowlistApi.md#delete_allowlists_v6) | **DELETE** /{stack}/adminconfig/v2/access/{feature}/ipallowlists-v6 | 
 [**delete_subnet**](AllowlistApi.md#delete_subnet) | **DELETE** /{stack}/adminconfig/v2/access/{feature}/ipallowlists/{subnet} | 
 [**delete_subnets**](AllowlistApi.md#delete_subnets) | **DELETE** /{stack}/adminconfig/v2/access/{feature}/ipallowlists | 
 [**describe_allowlist**](AllowlistApi.md#describe_allowlist) | **GET** /{stack}/adminconfig/v2/access/{feature}/ipallowlists | 
@@ -90,6 +93,254 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | accepted request to add a new forwarder ipallowlist |  -  |
+**0** | unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_allowlist_v6**
+> WarningResponse create_allowlist_v6(stack, feature, delete_outbound_port_v6_request)
+
+
+
+add ipv6 subnets to the allowlist for the feature, if they don't already exist
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import splunk_acs_sdk
+from splunk_acs_sdk.models.delete_outbound_port_v6_request import DeleteOutboundPortV6Request
+from splunk_acs_sdk.models.warning_response import WarningResponse
+from splunk_acs_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = splunk_acs_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = splunk_acs_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with splunk_acs_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = splunk_acs_sdk.AllowlistApi(api_client)
+    stack = 'stack_example' # str | the stack name
+    feature = 'feature_example' # str | the feature the access rules apply towards
+    delete_outbound_port_v6_request = splunk_acs_sdk.DeleteOutboundPortV6Request() # DeleteOutboundPortV6Request | the new subnets
+
+    try:
+        api_response = api_instance.create_allowlist_v6(stack, feature, delete_outbound_port_v6_request)
+        print("The response of AllowlistApi->create_allowlist_v6:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AllowlistApi->create_allowlist_v6: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stack** | **str**| the stack name | 
+ **feature** | **str**| the feature the access rules apply towards | 
+ **delete_outbound_port_v6_request** | [**DeleteOutboundPortV6Request**](DeleteOutboundPortV6Request.md)| the new subnets | 
+
+### Return type
+
+[**WarningResponse**](WarningResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | accepted request to add new ipv6 allowlist |  -  |
+**0** | unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_allowlist_v6**
+> WarningResponse delete_allowlist_v6(stack, feature, subnet)
+
+
+
+delete an existing ipv6 subnet if it exists, from where the feature is accessible from
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import splunk_acs_sdk
+from splunk_acs_sdk.models.warning_response import WarningResponse
+from splunk_acs_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = splunk_acs_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = splunk_acs_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with splunk_acs_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = splunk_acs_sdk.AllowlistApi(api_client)
+    stack = 'stack_example' # str | the stack name
+    feature = 'feature_example' # str | the feature the access rules apply towards
+    subnet = 'subnet_example' # str | the ipv6 subnet to be deleted
+
+    try:
+        api_response = api_instance.delete_allowlist_v6(stack, feature, subnet)
+        print("The response of AllowlistApi->delete_allowlist_v6:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AllowlistApi->delete_allowlist_v6: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stack** | **str**| the stack name | 
+ **feature** | **str**| the feature the access rules apply towards | 
+ **subnet** | **str**| the ipv6 subnet to be deleted | 
+
+### Return type
+
+[**WarningResponse**](WarningResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | accepted request to delete the ipv6 allowlist |  -  |
+**0** | unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_allowlists_v6**
+> WarningResponse delete_allowlists_v6(stack, feature, delete_outbound_port_v6_request)
+
+
+
+delete existing ipv6 subnets (if they exists) from where the splunk cloud stack feature is accessible from
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import splunk_acs_sdk
+from splunk_acs_sdk.models.delete_outbound_port_v6_request import DeleteOutboundPortV6Request
+from splunk_acs_sdk.models.warning_response import WarningResponse
+from splunk_acs_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = splunk_acs_sdk.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = splunk_acs_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with splunk_acs_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = splunk_acs_sdk.AllowlistApi(api_client)
+    stack = 'stack_example' # str | the stack name
+    feature = 'feature_example' # str | the feature the access rules apply towards
+    delete_outbound_port_v6_request = splunk_acs_sdk.DeleteOutboundPortV6Request() # DeleteOutboundPortV6Request | the ipv6 subnets to be deleted
+
+    try:
+        api_response = api_instance.delete_allowlists_v6(stack, feature, delete_outbound_port_v6_request)
+        print("The response of AllowlistApi->delete_allowlists_v6:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AllowlistApi->delete_allowlists_v6: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stack** | **str**| the stack name | 
+ **feature** | **str**| the feature the access rules apply towards | 
+ **delete_outbound_port_v6_request** | [**DeleteOutboundPortV6Request**](DeleteOutboundPortV6Request.md)| the ipv6 subnets to be deleted | 
+
+### Return type
+
+[**WarningResponse**](WarningResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | accepted request to delete the ipv6 allowlist |  -  |
 **0** | unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

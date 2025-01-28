@@ -177,6 +177,9 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**list_users**](docs/UsersApi.md#list_users) | **GET** /{stack}/adminconfig/v2/users | 
 *UsersApi* | [**patch_user**](docs/UsersApi.md#patch_user) | **PATCH** /{stack}/adminconfig/v2/users/{userName} | 
 *AllowlistApi* | [**add_subnets**](docs/AllowlistApi.md#add_subnets) | **POST** /{stack}/adminconfig/v2/access/{feature}/ipallowlists | 
+*AllowlistApi* | [**create_allowlist_v6**](docs/AllowlistApi.md#create_allowlist_v6) | **POST** /{stack}/adminconfig/v2/access/{feature}/ipallowlists-v6 | 
+*AllowlistApi* | [**delete_allowlist_v6**](docs/AllowlistApi.md#delete_allowlist_v6) | **DELETE** /{stack}/adminconfig/v2/access/{feature}/ipallowlists-v6/{subnet} | 
+*AllowlistApi* | [**delete_allowlists_v6**](docs/AllowlistApi.md#delete_allowlists_v6) | **DELETE** /{stack}/adminconfig/v2/access/{feature}/ipallowlists-v6 | 
 *AllowlistApi* | [**delete_subnet**](docs/AllowlistApi.md#delete_subnet) | **DELETE** /{stack}/adminconfig/v2/access/{feature}/ipallowlists/{subnet} | 
 *AllowlistApi* | [**delete_subnets**](docs/AllowlistApi.md#delete_subnets) | **DELETE** /{stack}/adminconfig/v2/access/{feature}/ipallowlists | 
 *AllowlistApi* | [**describe_allowlist**](docs/AllowlistApi.md#describe_allowlist) | **GET** /{stack}/adminconfig/v2/access/{feature}/ipallowlists | 
@@ -187,11 +190,22 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**list_hecs**](docs/DefaultApi.md#list_hecs) | **GET** /{stack}/adminconfig/v2/inputs/http-event-collectors | 
 *DefaultApi* | [**patch_hec**](docs/DefaultApi.md#patch_hec) | **PATCH** /{stack}/adminconfig/v2/inputs/http-event-collectors/{hec} | 
 *DefaultApi* | [**update_hec**](docs/DefaultApi.md#update_hec) | **PUT** /{stack}/adminconfig/v2/inputs/http-event-collectors/{hec} | 
+*Ipv6Api* | [**create_allowlist_v6**](docs/Ipv6Api.md#create_allowlist_v6) | **POST** /{stack}/adminconfig/v2/access/{feature}/ipallowlists-v6 | 
+*Ipv6Api* | [**create_outbound_ports_v6**](docs/Ipv6Api.md#create_outbound_ports_v6) | **POST** /{stack}/adminconfig/v2/access/outbound-ports-v6 | 
+*Ipv6Api* | [**delete_allowlist_v6**](docs/Ipv6Api.md#delete_allowlist_v6) | **DELETE** /{stack}/adminconfig/v2/access/{feature}/ipallowlists-v6/{subnet} | 
+*Ipv6Api* | [**delete_allowlists_v6**](docs/Ipv6Api.md#delete_allowlists_v6) | **DELETE** /{stack}/adminconfig/v2/access/{feature}/ipallowlists-v6 | 
+*Ipv6Api* | [**delete_outbound_port_v6**](docs/Ipv6Api.md#delete_outbound_port_v6) | **DELETE** /{stack}/adminconfig/v2/access/outbound-ports-v6/{port} | 
 *Ipv6Api* | [**describe_allowlist_v6**](docs/Ipv6Api.md#describe_allowlist_v6) | **GET** /{stack}/adminconfig/v2/access/{feature}/ipallowlists-v6 | 
+*Ipv6Api* | [**describe_outboundports_v6**](docs/Ipv6Api.md#describe_outboundports_v6) | **GET** /{stack}/adminconfig/v2/access/outbound-ports-v6/{port} | 
+*Ipv6Api* | [**list_outbound_ports_v6**](docs/Ipv6Api.md#list_outbound_ports_v6) | **GET** /{stack}/adminconfig/v2/access/outbound-ports-v6 | 
 *OutboundApi* | [**add_outboundports**](docs/OutboundApi.md#add_outboundports) | **POST** /{stack}/adminconfig/v2/access/outbound-ports | 
+*OutboundApi* | [**create_outbound_ports_v6**](docs/OutboundApi.md#create_outbound_ports_v6) | **POST** /{stack}/adminconfig/v2/access/outbound-ports-v6 | 
+*OutboundApi* | [**delete_outbound_port_v6**](docs/OutboundApi.md#delete_outbound_port_v6) | **DELETE** /{stack}/adminconfig/v2/access/outbound-ports-v6/{port} | 
 *OutboundApi* | [**delete_outboundport**](docs/OutboundApi.md#delete_outboundport) | **DELETE** /{stack}/adminconfig/v2/access/outbound-ports/{port} | 
 *OutboundApi* | [**describe_outboundports**](docs/OutboundApi.md#describe_outboundports) | **GET** /{stack}/adminconfig/v2/access/outbound-ports/{port} | 
+*OutboundApi* | [**describe_outboundports_v6**](docs/OutboundApi.md#describe_outboundports_v6) | **GET** /{stack}/adminconfig/v2/access/outbound-ports-v6/{port} | 
 *OutboundApi* | [**get_outboundports**](docs/OutboundApi.md#get_outboundports) | **GET** /{stack}/adminconfig/v2/access/outbound-ports | 
+*OutboundApi* | [**list_outbound_ports_v6**](docs/OutboundApi.md#list_outbound_ports_v6) | **GET** /{stack}/adminconfig/v2/access/outbound-ports-v6 | 
 *RestartApi* | [**restart_stack**](docs/RestartApi.md#restart_stack) | **POST** /{stack}/adminconfig/v2/restart-now | 
 *RestartApi* | [**restart_status**](docs/RestartApi.md#restart_status) | **GET** /{stack}/adminconfig/v2/restart/status | 
 *SystemApi* | [**describe_deployment**](docs/SystemApi.md#describe_deployment) | **GET** /{stack}/adminconfig/v2/deployment/status/{deploymentID} | 
@@ -215,8 +229,11 @@ Class | Method | HTTP request | Description
  - [ChangePythonVersionRequest](docs/ChangePythonVersionRequest.md)
  - [CreateEcSsoPairingResponse](docs/CreateEcSsoPairingResponse.md)
  - [CreateHEC202Response](docs/CreateHEC202Response.md)
+ - [CreateOutboundPortsV6Request](docs/CreateOutboundPortsV6Request.md)
+ - [CreateOutboundPortsV6RequestOutboundPortsInner](docs/CreateOutboundPortsV6RequestOutboundPortsInner.md)
  - [CreateToken200Response](docs/CreateToken200Response.md)
  - [CreateUserRequest](docs/CreateUserRequest.md)
+ - [DeleteOutboundPortV6Request](docs/DeleteOutboundPortV6Request.md)
  - [DeleteOutboundportRequest](docs/DeleteOutboundportRequest.md)
  - [DeploymentInfo](docs/DeploymentInfo.md)
  - [DeploymentStatus](docs/DeploymentStatus.md)
@@ -225,7 +242,6 @@ Class | Method | HTTP request | Description
  - [DescribeEligibilityPrivateConnectivity](docs/DescribeEligibilityPrivateConnectivity.md)
  - [DescribeHec200Response](docs/DescribeHec200Response.md)
  - [DescribeManagedGlueResources](docs/DescribeManagedGlueResources.md)
- - [DescribeOutboundports200Response](docs/DescribeOutboundports200Response.md)
  - [DescribePrivateConnectivity](docs/DescribePrivateConnectivity.md)
  - [DescribeStack200Response](docs/DescribeStack200Response.md)
  - [DescribeWorkflowResponseObject](docs/DescribeWorkflowResponseObject.md)
@@ -238,7 +254,6 @@ Class | Method | HTTP request | Description
  - [GetEcSsoPairingStatusResponse](docs/GetEcSsoPairingStatusResponse.md)
  - [GetIndexInfo200Response](docs/GetIndexInfo200Response.md)
  - [GetLimitConfig200Response](docs/GetLimitConfig200Response.md)
- - [GetOutboundports200Response](docs/GetOutboundports200Response.md)
  - [HecInfo](docs/HecInfo.md)
  - [HecSpec](docs/HecSpec.md)
  - [ImportedRolesInfo](docs/ImportedRolesInfo.md)

@@ -1927,16 +1927,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "outboundports": {
-                      "description": "the subnets from where the stack feature can access to",
-                      "items": {
-                        "$ref": "#/components/schemas/OutboundResponse"
-                      },
-                      "type": "array"
-                    }
+                  "description": "the subnets from where the stack feature can access to",
+                  "items": {
+                    "$ref": "#/components/schemas/OutboundResponse"
                   },
-                  "type": "object"
+                  "type": "array"
                 }
               }
             },
@@ -2025,7 +2020,173 @@
         "x-auth-required": false
       }
     },
+    "/{stack}/adminconfig/v2/access/outbound-ports-v6": {
+      "get": {
+        "description": "list the outboundports with ports and ipv6 subnets",
+        "operationId": "ListOutboundPortsV6",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/stack"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "the ipv6 subnets from where the stack feature can access to",
+                  "items": {
+                    "$ref": "#/components/schemas/OutboundResponse"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "list of outbound ports with ipv6 subnets"
+          },
+          "default": {
+            "$ref": "#/components/responses/defaultError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "outbound",
+          "ipv6"
+        ],
+        "x-auth-required": false
+      },
+      "post": {
+        "description": "add ipv6 subnets to the outboundports for the feature, if they don't already exist",
+        "operationId": "CreateOutboundPortsV6",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/stack"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "outboundPorts": {
+                    "items": {
+                      "properties": {
+                        "port": {
+                          "format": "int32",
+                          "type": "integer"
+                        },
+                        "subnets": {
+                          "items": {
+                            "description": "ipv6 subnet e.g. ff06::c3/128",
+                            "type": "string"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "the new ipv6 subnets",
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WarningResponse"
+                }
+              }
+            },
+            "description": "successfully submitted request to add an outbound port with ipv6 subnets"
+          },
+          "default": {
+            "$ref": "#/components/responses/defaultError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "outbound",
+          "ipv6"
+        ],
+        "x-auth-required": false
+      }
+    },
     "/{stack}/adminconfig/v2/access/outbound-ports-v6/{port}": {
+      "delete": {
+        "description": "delete an existing ipv6 outbound port if it exists, from where the feature is accessible from",
+        "operationId": "DeleteOutboundPortV6",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/stack"
+          },
+          {
+            "description": "the ipv6 outbound port to be deleted",
+            "in": "path",
+            "name": "port",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "subnets": {
+                    "items": {
+                      "description": "ipv6 subnet e.g. ff06::c3/128",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "the ipv6 subnets to delete outbound ports for",
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "successfully submitted request to delete ipv6 outbound port"
+          },
+          "default": {
+            "$ref": "#/components/responses/defaultError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "outbound",
+          "ipv6"
+        ],
+        "x-auth-required": false
+      },
       "get": {
         "description": "describe the outboundports with ports and ipv6 subnets",
         "operationId": "DescribeOutboundportsV6",
@@ -2049,16 +2210,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "outboundports": {
-                      "description": "the ipv6 subnets from where the stack feature can access to",
-                      "items": {
-                        "$ref": "#/components/schemas/OutboundResponse"
-                      },
-                      "type": "array"
-                    }
+                  "description": "the ipv6 subnets from where the stack feature can access to",
+                  "items": {
+                    "$ref": "#/components/schemas/OutboundResponse"
                   },
-                  "type": "object"
+                  "type": "array"
                 }
               }
             },
@@ -2160,16 +2316,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "outboundports": {
-                      "description": "the subnets from where the stack feature can access to",
-                      "items": {
-                        "$ref": "#/components/schemas/OutboundResponse"
-                      },
-                      "type": "array"
-                    }
+                  "description": "the subnets from where the stack feature can access to",
+                  "items": {
+                    "$ref": "#/components/schemas/OutboundResponse"
                   },
-                  "type": "object"
+                  "type": "array"
                 }
               }
             },
@@ -2350,6 +2501,63 @@
       }
     },
     "/{stack}/adminconfig/v2/access/{feature}/ipallowlists-v6": {
+      "delete": {
+        "description": "delete existing ipv6 subnets (if they exists) from where the splunk cloud stack feature is accessible from",
+        "operationId": "DeleteAllowlistsV6",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/stack"
+          },
+          {
+            "$ref": "#/components/parameters/feature"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "subnets": {
+                    "items": {
+                      "description": "ipv6 subnet e.g. ff06::c3/128",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "the ipv6 subnets to be deleted",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WarningResponse"
+                }
+              }
+            },
+            "description": "accepted request to delete the ipv6 allowlist"
+          },
+          "default": {
+            "$ref": "#/components/responses/defaultError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "allowlist",
+          "ipv6"
+        ],
+        "x-auth-required": false
+      },
       "get": {
         "description": "describe the allowlist with its status and ipv6 subnets from where the feature is accessible from",
         "operationId": "DescribeAllowlistV6",
@@ -2380,6 +2588,111 @@
               }
             },
             "description": "list of ipv6 subnets"
+          },
+          "default": {
+            "$ref": "#/components/responses/defaultError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "allowlist",
+          "ipv6"
+        ],
+        "x-auth-required": false
+      },
+      "post": {
+        "description": "add ipv6 subnets to the allowlist for the feature, if they don't already exist",
+        "operationId": "CreateAllowlistV6",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/stack"
+          },
+          {
+            "$ref": "#/components/parameters/feature"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "subnets": {
+                    "items": {
+                      "description": "ipv6 subnet e.g. ff06::c3/128",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "the new subnets",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WarningResponse"
+                }
+              }
+            },
+            "description": "accepted request to add new ipv6 allowlist"
+          },
+          "default": {
+            "$ref": "#/components/responses/defaultError"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "allowlist",
+          "ipv6"
+        ],
+        "x-auth-required": false
+      }
+    },
+    "/{stack}/adminconfig/v2/access/{feature}/ipallowlists-v6/{subnet}": {
+      "delete": {
+        "description": "delete an existing ipv6 subnet if it exists, from where the feature is accessible from",
+        "operationId": "DeleteAllowlistV6",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/stack"
+          },
+          {
+            "$ref": "#/components/parameters/feature"
+          },
+          {
+            "description": "the ipv6 subnet to be deleted",
+            "in": "path",
+            "name": "subnet",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WarningResponse"
+                }
+              }
+            },
+            "description": "accepted request to delete the ipv6 allowlist"
           },
           "default": {
             "$ref": "#/components/responses/defaultError"
